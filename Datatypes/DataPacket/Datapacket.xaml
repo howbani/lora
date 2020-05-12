@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="LORA.DataPacket.Datapacket"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="50" d:DesignWidth="50">
+
+    <!--UserControl.Resources>
+        <Storyboard x:Key="MoveOverAline">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="lbl_lable_node">
+                <EasingDoubleKeyFrame x:Name="pt_source_x" KeyTime="0" Value="25"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="-25"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="lbl_lable_node">
+                <EasingDoubleKeyFrame  x:Name="pt_source_y" KeyTime="0" Value="25"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="-5.5"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </UserControl.Resources>
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource MoveOverAline}"/>
+        </EventTrigger>
+</UserControl.Triggers-->
+
+    <Path StrokeDashCap="Flat"  Name="vis_line"  Stroke ="Brown" StrokeThickness ="0.6">
+        <Path.Data>
+            <PathGeometry>
+                <PathGeometry.Figures>
+                    <PathFigureCollection>
+                        <PathFigure x:Name="Edg_start_point" StartPoint ="0,0">
+                            <PathFigure.Segments>
+                                <PathSegmentCollection>
+                                    <LineSegment x:Name="Edg_end_point"  Point ="50,50"/>
+                                </PathSegmentCollection >
+                            </PathFigure.Segments >
+                        </PathFigure>
+                    </PathFigureCollection>
+                </PathGeometry.Figures>
+            </PathGeometry >
+        </Path.Data>
+    </Path>
+    
+    
+    
+</UserControl>
