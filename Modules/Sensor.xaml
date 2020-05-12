@@ -1,0 +1,151 @@
+﻿<UserControl x:Class="LORA.Modules.Sensor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             MouseEnter="UserControl_MouseEnter"
+             MouseLeave="UserControl_MouseLeave"
+            
+             d:DesignHeight="100" d:DesignWidth="100">
+
+
+    <Grid 
+        Name="Device_Sensor"
+        MouseDown="Device_Sensor_MouseDown"
+        MouseMove="Device_Sensor_MouseMove"
+        MouseUp="Device_Sensor_MouseUp"
+        >
+        <Grid.ContextMenu>
+            <ContextMenu>
+                
+                <Label MouseDown="btn_send_packet_MouseDown" Name="btn_send_1_packet">
+                   Send 1 Packet
+                </Label>
+                <Label Name="btn_send_10_packet" MouseDown="btn_send_packet_MouseDown">
+                    Send 10 Packets
+                </Label>
+                <Label Name="btn_send_100_packet" MouseDown="btn_send_packet_MouseDown">
+                    Send 100 Packets
+                </Label>
+                <Label Name="btn_send_300_packet" MouseDown="btn_send_packet_MouseDown">
+                    Send 300 Packets
+                </Label>
+                <Label Name="btn_send_1000_packet" MouseDown="btn_send_packet_MouseDown">
+                    Send 1000 Packets
+                </Label>
+                <Label Name="btn_send_5000_packet" MouseDown="btn_send_packet_MouseDown">
+                    Send 5000 Packets
+                </Label>
+                <Label MouseDown="btn_send_packet_MouseDown" Name="_rbtn_send_1_packet">
+                   Random Controls: Send 1 Packet
+                </Label>
+                <Label Name="_rbtn_send_10_packet" MouseDown="btn_send_packet_MouseDown">
+                    Random Controls: Send 10 Packets
+                </Label>
+                <Label Name="_rbtn_send_100_packet" MouseDown="btn_send_packet_MouseDown">
+                    Random Controls: Send 100 Packets
+                </Label>
+
+                <Label Name="_rbtn_send_300_packet" MouseDown="btn_send_packet_MouseDown">
+                    Random Controls: Send 300 Packets
+                </Label>
+                <Label Name="_rbtn_send_1000_packet" MouseDown="btn_send_packet_MouseDown">
+                    Random Controls: Send 1000 Packets
+                </Label>
+
+                <Label MouseDown="btn_show_relativyt_MouseDown" Name="btn_show_relativyt">
+                    Show Link Estimations
+                </Label>
+
+
+                <Label MouseDown="btn_show_routing_log_MouseDown" Name="btn_show_routing_log">
+                    Show Routing Log
+                </Label>
+
+                <Label MouseDown="btn_draw_random_numbers_MouseDown" Name="btn_draw_random_numbers">
+                    Show Random Number Log
+                </Label>
+
+                <Label MouseDown="btn_show_my_duytcycling_MouseDown" Name="btn_show_my_duytcycling">
+                    Show Duty Cycle
+                </Label>
+
+            </ContextMenu>
+        </Grid.ContextMenu>
+
+        <Ellipse 
+            Name="Ellipse_Communication_range" 
+            VerticalAlignment="Center" 
+            HorizontalAlignment="Center" 
+            Width="50" 
+            Height="50" 
+            Visibility="Hidden"
+            StrokeDashArray="0.4"
+            Stroke="Black"/>
+        
+        <Ellipse 
+            Name="Ellipse_Sensing_range" 
+            VerticalAlignment="Center" 
+            HorizontalAlignment="Center" 
+            Width="25" 
+            Height="25" 
+            Visibility="Hidden"
+            StrokeDashArray="0.3"
+            Stroke="Black"/>
+        
+        <Ellipse 
+            Name="Ellipse_center"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            MouseEnter="Ellipse_center_MouseEnter"
+            Fill="Gray"
+            Width="13" 
+            Height="13" 
+            StrokeDashArray="0.3"
+            Stroke="Green">
+        </Ellipse>
+
+        <Ellipse 
+            Name="Ellipse_MAC"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            MouseEnter="Ellipse_center_MouseEnter"
+            Fill="SeaGreen"
+            Width="8" 
+            Height="8" 
+             StrokeDashArray="0.3"
+            Stroke="White">
+        </Ellipse>
+
+
+        <Label
+            VerticalAlignment="Center" 
+            HorizontalAlignment="Center"
+            MouseEnter="lbl_MouseEnter"
+            Visibility="Visible"
+            FontSize="10"
+            Margin="0,-20,0,0"
+            Name="lbl_Sensing_ID"
+            FontWeight="Light"
+            Content="120"
+            />
+
+        <ProgressBar
+            VerticalAlignment="Center" 
+            BorderThickness="0.6"
+            BorderBrush="Black"
+            HorizontalAlignment="Center"
+            Margin="0,20,0,0"
+            Visibility="Visible"
+            Name="Prog_batteryCapacityNotation"
+            ValueChanged="Prog_batteryCapacityNotation_ValueChanged"
+            Height="7"
+            Width="20"
+            />
+
+
+    </Grid>
+    
+    
+</UserControl>

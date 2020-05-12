@@ -1,0 +1,52 @@
+﻿<Window x:Class="LORA.ui.UIPowers"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        
+        mc:Ignorable="d"
+        Title="Control Parameters" Height="450" Width="300">
+    <StackPanel>
+        <StackPanel>
+            <Label>Energy Distribution Control (γ_Φ)</Label>
+            <ComboBox Name="com_energy"></ComboBox>
+        </StackPanel>
+
+        <StackPanel>
+            <Label>Transmission Distance Distribution Control (γ_d)</Label>
+            <ComboBox Name="com_transmision_distance"></ComboBox>
+        </StackPanel>
+
+        <StackPanel>
+            <Label>Direction Distribution Control (γ_θ)</Label>
+            <ComboBox Name="com_direction"></ComboBox>
+        </StackPanel>
+
+        <StackPanel>
+            <Label>Perpendicular Distance Distribution Control (γ_ψ)</Label>
+            <ComboBox Name="com_prependicular"></ComboBox>
+        </StackPanel>
+        <Label></Label>
+
+        
+        
+        <StackPanel>
+            <Label>Keep Logs</Label>
+            <ComboBox Name="com_keep_logs">
+                <ComboBoxItem>False</ComboBoxItem>
+                <ComboBoxItem>True</ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
+
+        <StackPanel>
+            <Label>Show Zone</Label>
+            <ComboBox Name="com_show_zone">
+                <ComboBoxItem>False</ComboBoxItem>
+                <ComboBoxItem>True</ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
+        
+        <Button Click="btn_set_Click" Name="btn_set">Set</Button>
+        
+    </StackPanel>
+</Window>

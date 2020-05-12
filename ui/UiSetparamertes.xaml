@@ -1,0 +1,229 @@
+﻿<Window xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit" 
+    x:Class="LORA.ui.UiSetparamertes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      
+        mc:Ignorable="d"
+        Closing="Window_Closing"
+        WindowState="Maximized"
+        WindowStartupLocation="CenterScreen"
+          Title="PZR: Probabilistic Zone Routing in Wireless Sensor Network" 
+        Height="775" Width="1200">
+
+    <StackPanel Margin="0,1,0,1" Orientation="Vertical">
+        <StackPanel Width="1200" Name="_stack_parameters" Orientation="Vertical">
+            <StackPanel Orientation="Horizontal" Name="_stack_parameters_1">
+                <Label Width="55">Network</Label>
+                <ComboBox Height="22" Name="com_network_name" Width="80" SelectionChanged="com_network_name_SelectionChanged">
+                </ComboBox>
+                <Label Width="35">Sink</Label>
+                <ComboBox Height="22" Name="comb_sink_node" Width="70" SelectionChanged="comb_sink_node_SelectionChanged">
+                </ComboBox>
+                <Label Width="47">Source</Label>
+                <ComboBox Height="22" Name="comb_source_node" Width="60" SelectionChanged="comb_source_node_SelectionChanged">
+                </ComboBox>
+                <Button Width="50" Height="22" Margin="5,0,0,0" Name="btn_deploy" Click="btn_deploy_Click">Deploy</Button>
+                <Label Width="21">δ=</Label>
+                <Label Name="lbl_sensingrange">0</Label>
+                <Label>,</Label>
+                <Label Width="21">β=</Label>
+                <Label Name="lbl_density">0</Label>
+                <Label>,</Label>
+                <Label Width="21">L=</Label>
+                <Label Name="lbl_control_range">0</Label>
+               
+                <Label  ToolTip="Routing zone width">RZW:</Label>
+                <ComboBox SelectionChanged="com_zone_width_control_SelectionChanged"  Width="50" Height="22" Name="com_zone_width_control"></ComboBox>
+               
+                <Label Width="55">Packets</Label>
+                <ComboBox Height="22" ToolTip="Number of packets to be sent in diffrent time" Name="comb_number_of_packets" Width="80"></ComboBox>
+                <Label Width="35">Exp.</Label>
+                <ComboBox Height="22" ToolTip="the number of experments." Name="com_numberof_exp" Width="70"></ComboBox>
+                <CheckBox Unchecked="check_random_Unchecked" Checked="check_random_Checked" Name="check_random" Margin="5,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center">Random Controls</CheckBox>
+
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Name="_stack_parameters_2">
+
+                <StackPanel Orientation="Horizontal" Name="stack_controls">
+
+                    <Label Width="40">(γ_Φ)</Label>
+                    <ComboBox Height="22" Name="com_energy" Width="45"></ComboBox>
+                    <Label Width="40">(γ_d)</Label>
+                    <ComboBox Height="22" Name="com_transmision_distance" Width="45"></ComboBox>
+                    <Label Width="40">(γ_θ)</Label>
+                    <ComboBox Height="22" Name="com_direction" Width="45"></ComboBox>
+                    <Label Width="40">(γ_ψ)</Label>
+                    <ComboBox Height="22" Name="com_prependicular" Width="45"></ComboBox>
+
+                    <Label Width="40"></Label>
+
+                    <Label>Steps(γ_Φ)</Label>
+                    <ComboBox Height="22" Name="com_energy_steps" Width="45"></ComboBox>
+                    <Label>Steps(γ_d)</Label>
+                    <ComboBox Height="22" Name="com_transmision_distance_steps" Width="45"></ComboBox>
+                    <Label>Steps(γ_θ)</Label>
+                    <ComboBox Height="22" Name="com_direction_steps" Width="45"></ComboBox>
+                    <Label>Steps(γ_ψ)</Label>
+                    <ComboBox Height="22" Name="com_prependicular_steps" Width="45"></ComboBox>
+                </StackPanel>
+                <Button Click="btn_simulate_Click" Height="25" Name="btn_simulate"  Width="100" Margin="20,0,0,0" VerticalAlignment="Bottom" HorizontalAlignment="Right">Start Simulation</Button>
+                <Button Click="btn_show_reslts_Click" x:Name="btn_show_reslts" Height="25" Width="100" Margin="20,0,0,0" VerticalAlignment="Bottom" HorizontalAlignment="Right" Content="Show Results 1"/>
+                <Button Click="btn_show_comhansiveResults_Click" x:Name="btn_show_comhansiveResults" Height="25" Width="100" Margin="20,0,0,0" VerticalAlignment="Bottom" HorizontalAlignment="Right" Content="Export Results"/>
+            </StackPanel>
+        </StackPanel>
+
+        <TabControl Name="tap_control">
+            <TabItem Header="FigTab1" >
+                <StackPanel Background="Transparent" Name="wrap_tab1" Orientation="Horizontal">
+                    <StackPanel Width="670" Orientation="Vertical">
+
+                        <chartingToolkit:Chart Name="chart_hops" Height="226" Width="600" Background="Transparent" Foreground="Black" BorderBrush="{x:Null}" Margin="1"   HorizontalAlignment="Left"  Title="(a) Hops Distrubtions" VerticalAlignment="Bottom">
+                            <chartingToolkit:Chart.Axes>
+                                <chartingToolkit:LinearAxis Title="Number of Hops" Orientation="X"  ShowGridLines="False" />
+                                <chartingToolkit:LinearAxis Title="Count" Orientation="Y" ShowGridLines="False" />
+                            </chartingToolkit:Chart.Axes>
+                        </chartingToolkit:Chart>
+
+                        <chartingToolkit:Chart Name="chart_eff" Height="226" Width="600" Background="Transparent" Foreground="Black" BorderBrush="{x:Null}" Margin="1"   HorizontalAlignment="Left"  Title="(b) Routing Efficiency" VerticalAlignment="Bottom">
+                            <chartingToolkit:Chart.Axes>
+                                <chartingToolkit:LinearAxis Title="Exp.ID" Orientation="X"  ShowGridLines="False" />
+                                <chartingToolkit:LinearAxis Title="Efficiency (%)" Orientation="Y" ShowGridLines="False" />
+                            </chartingToolkit:Chart.Axes>
+                            <chartingToolkit:LineSeries Title="RoutingDisE"   Name="col_RDE"  DependentValuePath="Value" IndependentValuePath="Key" ItemsSource="{Binding}" />
+                            <chartingToolkit:LineSeries Title="RoutingE"   Name="col_RE"  DependentValuePath="Value" IndependentValuePath="Key" ItemsSource="{Binding}" />
+                            <chartingToolkit:LineSeries Title="TransDisE"   Name="col_TDE"  DependentValuePath="Value" IndependentValuePath="Key" ItemsSource="{Binding}" />
+                        </chartingToolkit:Chart>
+
+                        <chartingToolkit:Chart Height="226" Width="600" Background="Transparent" Foreground="Black" BorderBrush="{x:Null}" Margin="1"   HorizontalAlignment="Left"  Title="(c) Average Number of Hops in each Path" VerticalAlignment="Bottom">
+                            <chartingToolkit:Chart.Axes>
+                                <chartingToolkit:LinearAxis Title="Exp.ID" Orientation="X"  ShowGridLines="False" />
+                                <chartingToolkit:LinearAxis Title="Av.hops for a path" Orientation="Y" ShowGridLines="False" />
+                            </chartingToolkit:Chart.Axes>
+                            <chartingToolkit:ColumnSeries Title="Hops"   Name="cols_hops"  DependentValuePath="Value" IndependentValuePath="Key" ItemsSource="{Binding}" />
+                        </chartingToolkit:Chart>
+                    </StackPanel>
+
+                    <StackPanel Width="600">
+                        <chartingToolkit:Chart Name="chart_delay" Height="226" Width="600" Background="Transparent" Foreground="Black" BorderBrush="{x:Null}" Margin="1"   HorizontalAlignment="Left"  Title="(d) Total Transmission and Propagation Delay" VerticalAlignment="Bottom">
+                            <chartingToolkit:Chart.Axes>
+                                <chartingToolkit:LinearAxis Title="Exp.ID" Orientation="X"  ShowGridLines="False" />
+                                <chartingToolkit:LinearAxis Title="Av.Delay (Ms)x10^5" Orientation="Y" ShowGridLines="False" />
+                            </chartingToolkit:Chart.Axes>
+                            <chartingToolkit:ColumnSeries Title="hops" Name="cols_delay_distribution"  DependentValuePath="Value" IndependentValuePath="Key" ItemsSource="{Binding}" />
+                        </chartingToolkit:Chart>
+
+                        <chartingToolkit:Chart Name="chart_energy" Height="226" Width="600" Background="Transparent" Foreground="Black" BorderBrush="{x:Null}" Margin="1"   HorizontalAlignment="Left"  Title="(e) Total Energy Consumption" VerticalAlignment="Bottom">
+                            <chartingToolkit:Chart.Axes>
+                                <chartingToolkit:LinearAxis Title="Exp.ID" Orientation="X"  ShowGridLines="False" />
+                                <chartingToolkit:LinearAxis Title="Av.Energy (j)x10^5" Orientation="Y" ShowGridLines="False" />
+                            </chartingToolkit:Chart.Axes>
+                            <chartingToolkit:ColumnSeries Title="hops"   Name="cols_energy_distribution"  DependentValuePath="Value" IndependentValuePath="Key" ItemsSource="{Binding}" />
+                        </chartingToolkit:Chart>
+
+                        <chartingToolkit:Chart Name="chart_routingDistance" Height="226" Width="600" Background="Transparent" Foreground="Black" BorderBrush="{x:Null}" Margin="1"   HorizontalAlignment="Left"  Title="(f) Average routing distance for each path" VerticalAlignment="Bottom">
+                            <chartingToolkit:Chart.Axes>
+                                <chartingToolkit:LinearAxis Title="Exp.ID" Orientation="X"  ShowGridLines="False" />
+                                <chartingToolkit:LinearAxis Title="Av. R.D(m)" Orientation="Y" ShowGridLines="False" />
+                            </chartingToolkit:Chart.Axes>
+                            <chartingToolkit:ColumnSeries Title="hops"   Name="col_routingDistance"  DependentValuePath="Value" IndependentValuePath="Key" ItemsSource="{Binding}" />
+                        </chartingToolkit:Chart>
+
+                    </StackPanel>
+
+                </StackPanel>
+            </TabItem>
+
+            <TabItem Header="FigTab2" >
+                <StackPanel Background="Transparent" Name="wrap_tab2" Orientation="Horizontal">
+                    <StackPanel Width="600" Orientation="Vertical">
+
+                        <chartingToolkit:Chart Name="chart_averageroutingdistance" Height="226" Width="600" Background="Transparent" Foreground="Black" BorderBrush="{x:Null}" Margin="1"   HorizontalAlignment="Left"  Title="(a) Average Transmission Distance (ATD) " VerticalAlignment="Bottom">
+                            <chartingToolkit:Chart.Axes>
+                                <chartingToolkit:LinearAxis Title="Exp.ID" Orientation="X"  ShowGridLines="False" />
+                                <chartingToolkit:LinearAxis Title="Av.Dis Per Hop (m)" Orientation="Y" ShowGridLines="False" />
+                            </chartingToolkit:Chart.Axes>
+                            <chartingToolkit:ColumnSeries Title="Value"   Name="col_averageroutingdistance"  DependentValuePath="Value" IndependentValuePath="Key" ItemsSource="{Binding}" />
+                        </chartingToolkit:Chart>
+
+                        <chartingToolkit:Chart Name="chart_TransmissionDistanceEfficiency" Height="226" Width="600" Background="Transparent" Foreground="Black" BorderBrush="{x:Null}" Margin="1"   HorizontalAlignment="Left"  Title="(b) Transmission Distance Efficiency (TDE)" VerticalAlignment="Bottom">
+                            <chartingToolkit:Chart.Axes>
+                                <chartingToolkit:LinearAxis Title="Exp.ID" Orientation="X"  ShowGridLines="False" />
+                                <chartingToolkit:LinearAxis Title="Efficiency(%)" Orientation="Y" ShowGridLines="False" />
+                            </chartingToolkit:Chart.Axes>
+                            <chartingToolkit:ColumnSeries Title="Value"   Name="col_TransmissionDistanceEfficiency"  DependentValuePath="Value" IndependentValuePath="Key" ItemsSource="{Binding}" />
+                        </chartingToolkit:Chart>
+
+                        <chartingToolkit:Chart Name="chart_routingdistanceefficiency" Height="226" Width="600" Background="Transparent" Foreground="Black" BorderBrush="{x:Null}" Margin="1"   HorizontalAlignment="Left"  Title="(c) Routing Distance Efficiency (RDE) " VerticalAlignment="Bottom">
+                            <chartingToolkit:Chart.Axes>
+                                <chartingToolkit:LinearAxis Title="Exp.ID" Orientation="X"  ShowGridLines="False" />
+                                <chartingToolkit:LinearAxis Title="Efficiency(%)" Orientation="Y" ShowGridLines="False" />
+                            </chartingToolkit:Chart.Axes>
+                            <chartingToolkit:ColumnSeries Title="Value"   Name="col_routingdistanceefficiency"  DependentValuePath="Value" IndependentValuePath="Key" ItemsSource="{Binding}" />
+                        </chartingToolkit:Chart>
+
+                    </StackPanel>
+                    <StackPanel Width="600">
+
+                        <chartingToolkit:Chart Name="chart_Routingefficiency" Height="226" Width="600" Background="Transparent" Foreground="Black" BorderBrush="{x:Null}" Margin="1"   HorizontalAlignment="Left"  Title="(d) Routing Efficiency (RE) " VerticalAlignment="Bottom">
+                            <chartingToolkit:Chart.Axes>
+                                <chartingToolkit:LinearAxis Title="Exp.ID" Orientation="X"  ShowGridLines="False" />
+                                <chartingToolkit:LinearAxis Title="Efficiency(%)" Orientation="Y" ShowGridLines="False" />
+                            </chartingToolkit:Chart.Axes>
+                            <chartingToolkit:ColumnSeries Title="Value"   Name="col_Routingefficiency"  DependentValuePath="Value" IndependentValuePath="Key" ItemsSource="{Binding}" />
+                        </chartingToolkit:Chart>
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="FigTab3" >
+                <StackPanel Background="Transparent" Name="wrap_tab3" Orientation="Horizontal">
+                    <StackPanel Width="600" Orientation="Vertical">
+
+                        <chartingToolkit:Chart Name="chart_RelaysCount" Height="300" Width="600" Background="Transparent" Foreground="Black" BorderBrush="{x:Null}" Margin="1"   HorizontalAlignment="Left"  Title="(a) Relays Count " VerticalAlignment="Bottom">
+                            <chartingToolkit:Chart.Axes>
+                                <chartingToolkit:LinearAxis Title="Exp.ID" Orientation="X"  ShowGridLines="False" />
+                                <chartingToolkit:LinearAxis Title="Count" Orientation="Y" ShowGridLines="False" />
+                            </chartingToolkit:Chart.Axes>
+                            <chartingToolkit:ColumnSeries Title="Count"   Name="cols_RelaysCount"  DependentValuePath="Value" IndependentValuePath="Key" ItemsSource="{Binding}" />
+                        </chartingToolkit:Chart>
+
+                        <chartingToolkit:Chart Name="chart_HopsPerRelay" Height="300" Width="600" Background="Transparent" Foreground="Black" BorderBrush="{x:Null}" Margin="1"   HorizontalAlignment="Left"  Title="(b) Hops Per Relay " VerticalAlignment="Bottom">
+                            <chartingToolkit:Chart.Axes>
+                                <chartingToolkit:LinearAxis Title="Exp.ID" Orientation="X"  ShowGridLines="False" />
+                                <chartingToolkit:LinearAxis Title="Count" Orientation="Y" ShowGridLines="False" />
+                            </chartingToolkit:Chart.Axes>
+                            <chartingToolkit:ColumnSeries Title="Count"   Name="col_HopsPerRelay"  DependentValuePath="Value" IndependentValuePath="Key" ItemsSource="{Binding}" />
+                        </chartingToolkit:Chart>
+
+                    </StackPanel>
+                    <StackPanel Width="600">
+                        <chartingToolkit:Chart Name="chart_Balanceing" Height="300" Width="600" Background="Transparent" Foreground="Black" BorderBrush="{x:Null}" Margin="1"   HorizontalAlignment="Left"  Title="(c) Path Spread" VerticalAlignment="Bottom">
+                            <chartingToolkit:Chart.Axes>
+                                <chartingToolkit:LinearAxis Title="Exp.ID" Orientation="X"  ShowGridLines="False" />
+                                <chartingToolkit:LinearAxis Title="(%)" Orientation="Y" ShowGridLines="False" />
+                            </chartingToolkit:Chart.Axes>
+                            <chartingToolkit:ColumnSeries Title="Value"   Name="cols_Balanceing"  DependentValuePath="Value" IndependentValuePath="Key" ItemsSource="{Binding}" />
+                        </chartingToolkit:Chart>
+
+                        <chartingToolkit:Chart Name="chart_BalanceEff" Height="300" Width="600" Background="Transparent" Foreground="Black" BorderBrush="{x:Null}" Margin="1"   HorizontalAlignment="Left"  Title="(d) Routing Balancing Efficiency (RBE) " VerticalAlignment="Bottom">
+                            <chartingToolkit:Chart.Axes>
+                                <chartingToolkit:LinearAxis Title="Exp.ID" Orientation="X"  ShowGridLines="False" />
+                                <chartingToolkit:LinearAxis Title="(%)" Orientation="Y" ShowGridLines="False" />
+                            </chartingToolkit:Chart.Axes>
+                            
+                            <chartingToolkit:LineSeries Title="TransDist"   Name="tab3_col_transDistance_eff"  DependentValuePath="Value" IndependentValuePath="Key" ItemsSource="{Binding}" />
+                            <chartingToolkit:LineSeries Title="RoutingDis"   Name="tab3_col_routing_distance_eff"  DependentValuePath="Value" IndependentValuePath="Key" ItemsSource="{Binding}" />
+                            <chartingToolkit:LineSeries Title="PathSpread"   Name="tab3_col_blancing"  DependentValuePath="Value" IndependentValuePath="Key" ItemsSource="{Binding}" />
+                            <chartingToolkit:LineSeries Title="BalancingEF"   Name="tab3_col_blancing_eff"  DependentValuePath="Value" IndependentValuePath="Key" ItemsSource="{Binding}" />
+
+                        </chartingToolkit:Chart>
+                        
+
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+    </StackPanel>
+</Window>

@@ -1,0 +1,72 @@
+﻿<Window x:Class="LORA.ExpermentsResults.Energy_consumptions.UISetParEnerConsum"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LORA.ExpermentsResults.Energy_consumptions"
+        mc:Ignorable="d"
+        WindowStyle="SingleBorderWindow"
+        
+        Title="UISetParEnerConsum" Height="300" Width="500">
+    
+    <StackPanel Margin="10" Orientation="Vertical">
+        <StackPanel Margin="2" Orientation="Horizontal">
+            <Label Width="150">Simulation Time</Label>
+            <ComboBox Width="100" Name="comb_simuTime"></ComboBox>
+            <Label>s</Label>
+            <CheckBox Unchecked="chk_stope_when_first_node_deis_Unchecked" Checked="chk_stope_when_first_node_deis_Checked" Name="chk_stope_when_first_node_deis" IsChecked="True" VerticalContentAlignment="Center" >Stop when the first node dies</CheckBox>
+        </StackPanel>
+
+        <StackPanel Margin="2" Orientation="Horizontal">
+            <Label Width="150" Content="Packet Rate: 1/"/>
+            <ComboBox Width="100" Name="comb_packet_rate"></ComboBox>
+            <Label>s</Label>
+            <CheckBox IsChecked="False" Name="chk_drawrouts" VerticalContentAlignment="Center" >Draw Packets Routs</CheckBox>
+        </StackPanel>
+
+        <StackPanel Margin="2" Orientation="Horizontal">
+            <Label Width="150" Content="Start up"/>
+            <ComboBox Width="100" Name="comb_startup" SelectionChanged="comb_startup_SelectionChanged"></ComboBox>
+            <Label>s</Label>
+            <CheckBox Name="chk_save_logs" IsChecked="False" VerticalContentAlignment="Center" >Save Logs</CheckBox>
+        </StackPanel>
+
+        <StackPanel Margin="2" Orientation="Horizontal">
+            <Label Width="150" Content="Active Period"/>
+            <ComboBox Width="100" Name="comb_active" SelectionChanged="comb_active_SelectionChanged"></ComboBox>
+            <Label>s</Label>
+        </StackPanel>
+
+        <StackPanel Margin="2" Orientation="Horizontal">
+            <Label Width="150" Content="Sleep Period"/>
+            <ComboBox Width="100" Name="comb_sleep" SelectionChanged="comb_sleep_SelectionChanged"></ComboBox>
+            <Label>s</Label>
+        </StackPanel>
+
+        <StackPanel Margin="2" Orientation="Horizontal">
+            <Label Width="150" Content="Update Energy Distrubution"/>
+            <ComboBox Width="100" Name="comb_update"></ComboBox>
+            <Label>%</Label>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Name="stack_controls">
+
+            <Label Width="40">(γ_Φ)</Label>
+            <ComboBox Height="22" Name="com_energy" Width="45"></ComboBox>
+            <Label Width="40">(γ_d)</Label>
+            <ComboBox Height="22" Name="com_transmision_distance" Width="45"></ComboBox>
+            <Label Width="40">(γ_θ)</Label>
+            <ComboBox Height="22" Name="com_direction" Width="45"></ComboBox>
+            <Label Width="40">(γ_ψ)</Label>
+            <ComboBox Height="22" Name="com_prependicular" Width="45"></ComboBox>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal">
+            <CheckBox VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Name="check_rounds">Rounds</CheckBox>
+            <Button Width="120" x:Name="btn_ok" Margin="100,0,91,0" Content="Start" Click="btn_ok_Click" Height="27"/>
+        </StackPanel>
+        
+
+    </StackPanel>
+
+</Window>
